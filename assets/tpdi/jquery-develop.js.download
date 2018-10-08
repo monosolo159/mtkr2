@@ -1,0 +1,90 @@
+/*
+ * @example  $("a.thumb, img.thumb").thumbs();
+	 .thumb-img {
+		position:relative; 
+		width:120px; height:120px;
+		margin:5px; padding:3px;
+		background:#FFF;
+	}
+	.thumb-inner {
+		position:relative; overflow:hidden; width:100%; height:100%; 
+	}
+ */
+jQuery.fn.thumbs=function()
+{
+	return this.wrap('<div class="thumb-img"><div class="thumb-inner">' + '</div></div>');
+}
+/*
+ * @example  $("a.thumb img, img.thumb").thumbsImg();
+ */
+jQuery.fn.thumbsImg=function()
+{
+	return this.each(
+		function()
+		{
+			$(this).css('position','absolute');
+			$(this).css('left','-' + ( parseInt( $(this).width() ) / 2 ) + 'px' );
+			$(this).css('top', '-' + ( parseInt( $(this).height() ) / 2 ) + 'px' );
+			$(this).css('margin-left', '50%' );
+			$(this).css('margin-top', '50%' );
+		}
+	)
+}
+
+/*
+ * @example  $("a.thumb img, img.thumb").thumbsImg();
+ */
+jQuery.fn.thumbsImgReSize=function(w)
+{
+	return this.each(
+		function()
+		{
+			var old_h= $(this).height(); 
+			var old_w= $(this).width(); 
+
+			var how=old_w/w; 
+			var new_w=Math.floor(old_w/how); 
+			var new_h=Math.floor(old_h/how); 
+
+			//$(this).css('position','absolute');
+			$(this).css('position','absolute');
+			$(this).css('width',new_w+ 'px' );
+			$(this).css('height',new_h+ 'px' );
+		}
+	)
+}
+
+/*
+ * @example  $("a.thumb img, img.thumb").imagePreview();
+ */
+
+jQuery.fn.imagePreview=function()
+{
+	/* add css
+	#preview{
+	position:absolute;
+	border:1px solid #ccc;
+	background:#333;
+	padding:5px;
+	display:none;
+	}
+	*/
+	xOffset = 10;
+	yOffset = 10;
+	this.hover(function(e){
+		
+		$("body").append("<p id='preview'><img src='"+ this.src +"' width='"+($(this).width()*3)+"' height='"+($(this).height()*3)+"' /></p>");								 
+		$("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px")
+			.fadeIn("fast");						
+	},
+	function(){
+		$("#preview").remove();
+	});	
+	this.mousemove(function(e){
+		$("#preview")
+			.css("top",(e.pageY - xOffset) + "px")
+			.css("left",(e.pageX + yOffset) + "px");
+	});
+}

@@ -1,0 +1,347 @@
+function sys_MenuToggle(myObj){
+	if(myObj>0){
+		var max=$('#maxMenu').val();
+		for(i=1;i<=max;i++){
+			$("#sub-"+i).hide("normal"); 
+		}
+
+		if($('#sub-'+myObj).is(':visible')){
+			sys_HideMenu(myObj);
+		}else{
+			sys_ShowMenu(myObj);
+		}
+	}
+}
+function sys_MenuToggle2(myObj,myObj1){
+	if(myObj1>0){
+		var max=$('#maxMenu1').val();
+		for(i=1000;i<=max;i++){
+			$("#sub-"+i).hide("normal"); 
+		}
+		sys_ShowMenu(myObj);
+		if($('#sub-'+myObj1).is(':visible')){
+			sys_HideMenu(myObj1);
+		}else{
+			sys_ShowMenu(myObj1);
+		}
+	}
+}
+function sys_ShowMenu(myObj) {
+	$("#sub-"+myObj).show("normal");	
+}
+
+function sys_HideMenu(myObj) {
+	$("#sub-"+myObj).hide("normal");
+}
+
+function sys_popUpCal(v){
+	popUpCalendar(v,v, "yyyy-mm-dd");
+}
+
+function sys_CheckFormEmpty(myValue){
+	var variable = $('#'+myValue).val();
+	var err=0;
+	if(variable.length<1){
+		var classN=$('#'+myValue).attr("class");
+		classN=classN.replace('_error','');
+		$('#'+myValue).attr("class", classN+"_error");
+	//	$('#'+myValue).focus();
+		err=1;
+	}else{
+		var classN=$('#'+myValue).attr("class");
+		classN=classN.replace('_error','');
+		$('#'+myValue).attr("class",classN);
+	}
+	return err;
+}
+
+
+function sys_CheckFormTextAreaEmpty(myValue){
+	var err=0;
+	var  oEditor  = FCKeditorAPI.GetInstance(myValue).GetHTML(); 
+	if(oEditor.length<2){
+		FCKeditorAPI.GetInstance(myValue).SetHTML(''); 
+		FCKeditorAPI.GetInstance(myValue).EditorDocument.body.focus();
+		err=1;
+	}
+	return err;
+}
+
+ function sys_CheckboxAll(chk, inputCheckBoxID, intTotalItems){
+		for(i=1;i<=$('#'+intTotalItems).val();i++){
+				if(chk==null) { } else { $("#"+inputCheckBoxID+i).attr("checked", chk.checked);	}	
+		}
+		return true;
+}
+
+function sys_DeleteMore(){
+	var valchk='0';
+	if(sys_CheckboxCount()>0){
+		 if(confirm('ยันยืนการลบข้อมูล กรุณาคลิก OK')) {
+			for(i=1;i<=$('#inputCheckBoxTotal').val();i++){
+					if($("#inputCheckBoxID"+i).is(':checked')){	
+						valchk+=','+$("#inputCheckBoxID"+i).val();
+					}	
+			}
+
+			$('#Sys_Action').val("deletemore");
+			$('#Sys_DataID').val(valchk);
+			$('#myForm').submit();
+		}
+	}else{
+		alert("กรุณาเลือกอย่างน้อย 1รายการ เพื่อทำการ ลบ");
+	}
+}
+
+ function sys_CheckboxCount(){
+		var NumChk=0;
+		for(i=1;i<=$('#inputCheckBoxTotal').val();i++){
+				if($("#inputCheckBoxID"+i).is(':checked')){	
+					NumChk++;
+				}	
+		}
+		return NumChk;
+}
+
+function sys_ModSearch(){
+	$('#Sys_Page').val('');
+	$('#Sys_PageSize').val('');
+	$('#myForm').submit();
+}
+/*
+function sys_HttpRequestPost( post_url, data_set, updateto){
+	//data_set= "name=John&location=Boston"
+
+	$.ajax({   
+        url: get_url,     
+        type: "POST",           
+        data: data_set,        
+        cache: false,   
+        success: function (html) {     
+            //hide the progress bar   
+            //$('#loading').hide();      
+               
+            //add the content retrieved from ajax and put it in the #content div   
+            $('#'+updateto).html(html);   
+               
+            //display the body with fadeIn transition   
+            //$('#content').fadeIn('slow');          
+        }          
+	});   
+}
+
+function sys_HttpRequestGet(get_url, data_set, updateto){
+	//data_set= { name: "John", time: "2pm" };
+
+    $.ajax({   
+        url: get_url,     
+        type: "GET",           
+        data: data_set,        
+        cache: false,   
+        success: function (html) {     
+            //hide the progress bar   
+            //$('#loading').hide();      
+               
+            //add the content retrieved from ajax and put it in the #content div   
+            $('#'+updateto).html(html);   
+               
+            //display the body with fadeIn transition   
+            //$('#content').fadeIn('slow');          
+        }          
+	});   
+}
+*/
+
+function sys_getSortingData(){
+	var resultID = $("#sortable").sortable('toArray');
+	var max = $("#inputMaxOrder").val();
+	var valueList='', idList = '';
+
+	for(i=0;i<max;i++){
+		//เก็บค่า id
+		if(idList=='') {
+			idList = resultID[i];
+		} else {
+			idList = idList + "-" + resultID[i];
+		}
+
+		// เก็บค่า value
+		var myTemp1 = " "+$('#'+resultID[i]).html();
+		var myTemp2 = myTemp1.split('-->');
+		var myTemp3 = myTemp2[0].split('<!--');
+		if(valueList=='') {
+			valueList = myTemp3[1];
+		} else {
+			valueList = valueList + "-" + myTemp3[1];
+		}
+	}
+	$("#inputListID").attr("value", idList);
+	$("#inputListValue").attr("value",valueList);
+//	alert($("#inputListID").val());
+}
+
+function sys_toggleStatus( ){
+
+	var statusValueArray = $('#inputStatusValue').val();
+	statusValueArray = statusValueArray.split(',');
+	var statusIndexArray = $('#inputStatusIdex').val();
+	statusIndexArray = statusIndexArray.split(',');
+
+	var nextStatusValue = statusValueArray[0];	
+	var nextStatus = 'Enable';
+	var post_url = $('#inputFileName').val();
+	var inputDataID = $('#Sys_DataID').val();
+
+	for(i=0;i<statusIndexArray.length;i++) {
+		if($("#inputStatus"+statusIndexArray[i]).is(':checked')){	
+			nextStatus=$("#inputStatus"+statusIndexArray[i]).val();
+			nextStatusValue= statusValueArray[i];
+			
+		}
+	}
+
+	var data_set = { Sys_Action: 'status',Sys_DataID:inputDataID,inputStatusValue: nextStatus} ;
+	$.post( post_url , data_set , 
+			function(resp){	//+ resp คือข้อมูลที่ส่งกลับมาจาก Server 
+					if(resp=='OK') {
+						sys_HideObject('StatusPicker');
+						$("#Status"+inputDataID).html(nextStatusValue+"&nbsp;<img src='../../images/icon-status.gif' width='9' height='10' border='0' title='สถานะ' align='absmiddle'>");
+					} else {
+						alert("ระบบไม่สามารถเปลี่ยนสถานะได้\n กรุณากด refresh(F5) แล้วทำการเปลี่ยนแปลงอีกครั้ง"); 
+					}
+			  }
+		);
+}
+
+function sys_ShowStatusPicker(myObj, myID) {
+	
+	var CurrentStatus=$("#Status"+myID).html();
+	CurrentStatus=CurrentStatus.split("&nbsp;");
+	CurrentStatus=CurrentStatus[0];
+	var statusValueArray = $('#inputStatusValue').val();
+	statusValueArray = statusValueArray.split(',');
+	var statusIndexArray = $('#inputStatusIdex').val();
+	statusIndexArray = statusIndexArray.split(',');
+	for(i=0;i<statusIndexArray.length;i++) {
+		if(CurrentStatus==statusValueArray[i]){	
+			$("#inputStatus"+statusIndexArray[i]).attr("checked", "checked");	
+		}
+	}
+	$('#Sys_DataID').val(myID);
+
+	var x = sys_getposOffset(myObj,"left") - 130;
+	var y = sys_getposOffset(myObj,"top") - 80;
+	sys_ShowObject('StatusPicker');
+	$("#StatusPicker").css({ left:x , top:y });  
+}
+
+function sys_getposOffset(what, offsettype){
+            var totaloffset=(offsettype=="left")? what.offsetLeft : what.offsetTop;
+            var parentEl=what.offsetParent;
+            while (parentEl!=null){
+                        totaloffset=(offsettype=="left")? totaloffset+parentEl.offsetLeft : totaloffset+parentEl.offsetTop;
+                        parentEl=parentEl.offsetParent;
+            }
+            return totaloffset;
+}
+
+function sys_ShowObject(myObj) {
+	//Effects :  slow, normal, fast
+	$("#"+myObj).hide();   // เผื่อเปิดอันอื่นอยู่ ก็ให้ปิดก่อน
+	//$("#"+myObj).show(400);    
+	$("#"+myObj).slideDown(400);
+	//$("#"+myObj).fadeIn(400);
+	
+}
+
+function sys_HideObject(myObj) {
+	//Effects :  slow, normal, fast
+	//$("#"+myObj).hide(300);  
+	$("#"+myObj).slideUp(300);
+	//$("#"+myObj).fadeOut(300);
+}
+
+function verifyEmail(myObj){
+	var status = false;     
+	var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+
+     if ($(myObj).val().search(emailRegEx) == -1) {
+		  $("#inputEmailAlt").html("<span class='input_txtdetail'>อีเมล์ไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง</span>");
+		 var classN=$(myObj).attr("class");
+		 classN=classN.replace('_error','');
+		 $(myObj).attr("class", classN+"_error");
+     }else {
+          status = true;
+		  $("#inputEmailAlt").html("");
+		  var classN=$(myObj).attr("class");
+		  classN=classN.replace('_error','');
+		  $(myObj).attr("class",classN);
+     }
+     return status;
+}
+
+function errorInputForm(myObj,val){
+	// val = 0 : err , 1 : OK
+	var classN=$(myObj).attr("class");
+	if(val==0){
+		 classN=classN.replace('_error','');
+		 $(myObj).attr("class", classN+"_error");
+	}else{
+		 classN=classN.replace('_error','');
+		 $(myObj).attr("class",classN);
+	}
+}
+
+
+/* foncion on upload file*/
+var TotalFile=0;
+var FileQ = 0;
+var Complete=0;
+var FileSize =0 ;
+function removefile(id,pathfile){
+	var ValueArray = pathfile.split(',');
+	var data_set = { Sys_Action: 'removefile',Sys_DataPath:ValueArray[0], Sys_DataName:ValueArray[1]} ;
+	$.post( '../../obj/script-upload/scripts/uploadify-do.php' , data_set , 
+		function(resp){	
+				if(resp=='OK') {
+					$("#"+id).fadeOut(350);
+				} 
+		  }
+	);
+	
+}
+
+function removereadyfile(id,pathfile,table){
+	var data_set = { Sys_Action: 'removereadyfile',Sys_DataID:id, Sys_DataPath:pathfile, Sys_DataTable:table} ;
+	$.post( '../../obj/script-upload/scripts/uploadify-do.php' , data_set , 
+		function(resp){	
+				if(resp=='OK') {
+					$("#"+id).fadeOut(350);
+				} 
+		  }
+	);	
+}
+
+function getfilesize(size){
+	if(size>0){
+		bytevalue= Math.round((size/(1024*1024*1024))*10)/10;
+		if(bytevalue>0.9){
+			return bytevalue+" Gb";
+		}
+		bytevalue= Math.round((size/(1024*1024))*10)/10;
+		if(bytevalue>0.9){
+			return bytevalue+" Mb";
+		}
+		bytevalue= Math.round((size/(1024))*10)/10;
+		if(bytevalue>0.9){
+			return bytevalue+" Kb";
+		}
+		return size+" Byte";
+	}else{
+		return "0 Kb";
+	}
+}
+
+function sys_reset_html(id,Cid) {
+    $('#'+id).html($('#'+id).html());
+}

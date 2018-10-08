@@ -1,0 +1,14 @@
+.tbMain{ width:976px; border:none; border-collapse:collapse;}
+.tbNone, .tableNone{ border:none; border-collapse:collapse;}
+.tableNone td{ margin:0; padding:0;}
+.tdAcentVtop{ vertical-align:top; text-align:center; }
+.tdAcnt, .alignCenter{ text-align:center;}
+.tdVtop{ vertical-align:top;}
+.tdAleft{ text-align:left;}
+.tdTopLeft{ text-align:left; vertical-align:top;}
+.borderNone{ border:none;}
+.tbminiCal td { padding:2px; }
+.mgpd0{margin:0; padding:0;}
+.centerMiddle{ text-align:center; vertical-align:middle;}
+ #slider1 img { height:237px !important; }
+.tdpadding4 td{ padding:4px;}

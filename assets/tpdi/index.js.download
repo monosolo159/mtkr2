@@ -1,0 +1,98 @@
+function mod_verifyContactSubmit(){
+	var Error=0;
+	Error +=sys_CheckFormEmpty('inputName');
+	Error +=sys_CheckFormEmpty('inputEmail');
+	Error +=sys_CheckFormEmpty('inputSubject');
+	Error +=sys_CheckFormEmpty('inputDetail');
+	Error +=sys_CheckFormEmpty('inputVerification');
+	if(!verifyEmail($('#inputEmail'))){
+		Error+=1;
+	}
+	if($('#inputGroupID').val()=="0"){
+		Error+=1;
+		errorInputForm('#inputGroupID',0);
+	}else{
+		errorInputForm('#inputGroupID',1);
+	}
+	if(Error>0){
+		alert("กรุณากรอกข้อมูลที่ถูกต้องและให้ครบถ้วน\n\n หมายเหตุ : * จำเป็นต้องกรอกข้อมูล");
+	}else{
+		var url = $('#rootpath').val()+"index-do.php";
+		var data_set = { Sys_Action: 'checkContactCode',inputVerification:$('#inputVerification').val()} ;
+		$.post( url , data_set , 
+				function(resp){	
+						if(resp=='OK') {
+							errorInputForm('#inputVerification',1);
+							$('#myForm').submit();
+						} else {
+							$("#inputCode").html("<span class='alert_warning'>รหัสความปลอดภัยไม่ถูกต้อง กรุณากรอกใหมอีกครั้ง</span>");
+							errorInputForm('#inputVerification',0);
+							$('#inputVerification').val('');
+						}
+				  }
+			);
+	}
+}
+
+function mod_verifyFAQSubmit(){
+	var Error=0;
+	Error +=sys_CheckFormEmpty('inputName');
+	Error +=sys_CheckFormEmpty('inputEmail');
+	Error +=sys_CheckFormEmpty('inputSubject');
+	Error +=sys_CheckFormEmpty('inputDetail');
+	Error +=sys_CheckFormEmpty('inputVerification');
+	if(!verifyEmail($('#inputEmail'))){
+		Error+=1;
+	}
+	if(Error>0){
+		alert("กรุณากรอกข้อมูลที่ถูกต้องและให้ครบถ้วน\n\n หมายเหตุ : * จำเป็นต้องกรอกข้อมูล");
+	}else{
+		var url = $('#rootpath').val()+"index-do.php";
+		var data_set = { Sys_Action: 'checkFAQCode',inputVerification:$('#inputVerification').val()} ;
+		$.post(url , data_set , 
+				function(resp){	
+						if(resp=='OK') {
+							errorInputForm('#inputVerification',1);
+							$('#myForm').submit();
+						} else {
+							$("#inputCode").html("<span class='alert_warning'>รหัสความปลอดภัยไม่ถูกต้อง กรุณากรอกใหมอีกครั้ง</span>");
+							errorInputForm('#inputVerification',0);
+							$('#inputVerification').val('');
+						}
+				  }
+			);
+	}
+}
+
+function changemonth(mon,year){
+	if(mon=="0") mon=-1;
+	var url = $('#rootpath').val()+"mini-calendar.php";
+	
+	var data_set = { Sys_Action:'calendar',month:mon,year:year} ;
+	$.post( url , data_set , 
+			function(resp){	
+			
+					$("#showmonth").html(resp);
+					 Cufon.replace('.mini_calendar_width .head'); 
+			  }
+		);
+}
+
+function changemonthSubmit(mon,year){
+	$('#inputMonth').val(mon);
+	$('#inputYear').val(year);
+	$('#myForm').submit();
+}
+
+function getmonthdetail(day,mon,year){
+	$("#calendardetail").fadeIn('slow');
+	$("#calendardetail").html("<br><br><center>กำลังโหลดข้อมูล...</center><br>");
+	var url = $('#rootpath').val()+"mini-calendar.php";
+	var data_set = { Sys_Action:'calendardetail',day:day,month:mon,year:year} ;
+	$.post(url , data_set , 
+			function(resp){	
+					$("#calendardetail").fadeIn('slow');
+					$("#calendardetail").html(resp);
+			  }
+		);
+}
