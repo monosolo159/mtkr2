@@ -10,6 +10,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><a href="<?php echo base_url('Home/news'); ?>">ข่าวสาร</a></li>
     <li class="list-group-item"><a href="<?php echo base_url('Home/course'); ?>">หลักสูตร</a></li>
+    <li class="list-group-item"><a href="<?php echo base_url('Home/recentwork'); ?>">ผลงานล่าสุด</a></li>
     <li class="list-group-item"><a href="<?php echo base_url('Home/about'); ?>">เกี่ยวกับเรา</a></li>
     <li class="list-group-item"><a href="<?php echo base_url('Home/contact'); ?>">ติดต่อเรา</a></li>
   </ul>

@@ -62,6 +62,28 @@ class Home extends CI_Controller {
 		// print_r($_SESSION);
 	}
 
+	public function recentwork(){
+		$value = array(
+			'Result' => array(
+				// 'setting' => $setting
+			),
+			'View' => 'front/recentwork'
+		);
+		$this->LoadPage($value);
+		// print_r($_SESSION);
+	}
+
+	public function recentwork_detail(){
+		$value = array(
+			'Result' => array(
+				// 'setting' => $setting
+			),
+			'View' => 'front/recentwork_detail'
+		);
+		$this->LoadPage($value);
+		// print_r($_SESSION);
+	}
+
 	public function tpdi(){
 		$this->load->view('front/tpdi');
 
