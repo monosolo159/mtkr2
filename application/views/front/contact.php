@@ -20,7 +20,21 @@
 
               <div class="row">
                 <div class="col-12">
-                  <i class="far fa-envelope"></i> อีเมล : <a href="mailto:g4378jaruwanbu@kurupatana.ac.th">g4378jaruwanbu@kurupatana.ac.th</a>
+                  <hr>
+                  ฝ่ายวิชาการ<br>
+                  <i class="far fa-envelope"></i> อีเมล : <a href="mailto:academic@mittaikhuru.co.th">academic@mittaikhuru.co.th</a><br>
+                  <hr>
+                  ฝ่ายบุคคล<br>
+                  <i class="far fa-envelope"></i> อีเมล : <a href="mailto:human-resource@mittaikhuru.co.th">human-resource@mittaikhuru.co.th</a><br>
+                  <hr>
+                  <!-- <i class="far fa-envelope"></i> อีเมล : <a href="mailto:info@mittaikhuru.co.th">info@mittaikhuru.co.th</a><br> -->
+                  ฝ่ายการเงิน<br>
+                  <i class="far fa-envelope"></i> อีเมล : <a href="mailto:finance@mittaikhuru.co.th">finance@mittaikhuru.co.th</a><br>
+                  <hr>
+                  ผู้ดูแลระบบ<br>
+                  <i class="far fa-envelope"></i> อีเมล : <a href="mailto:admin@mittaikhuru.co.th">admin@mittaikhuru.co.th</a><br>
+                  <!-- <i class="far fa-envelope"></i> อีเมล : <a href="mailto:g4378jaruwanbu@kurupatana.ac.th">g4378jaruwanbu@kurupatana.ac.th</a> -->
+
                 </div>
               </div>
 

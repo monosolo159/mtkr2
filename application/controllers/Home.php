@@ -15,7 +15,18 @@ class Home extends CI_Controller {
 		$this->load->view('front/template/footer');
 	}
 	public function index(){
-		redirect('Home/news');
+		redirect('Home/portal');
+	}
+
+	public function portal(){
+		$value = array(
+			'Result' => array(
+				// 'setting' => $setting
+			),
+			'View' => 'front/portal'
+		);
+		$this->LoadPage($value);
+		// print_r($_SESSION);
 	}
 
 	public function news(){
@@ -63,9 +74,10 @@ class Home extends CI_Controller {
 	}
 
 	public function recentwork(){
+		$query = $this->Recentwork_model->recentwork_list();
 		$value = array(
 			'Result' => array(
-				// 'setting' => $setting
+				'recentwork' => $query
 			),
 			'View' => 'front/recentwork'
 		);
@@ -74,19 +86,51 @@ class Home extends CI_Controller {
 	}
 
 	public function recentwork_detail(){
+		$id  = $this->uri->segment(3);
+		$query = $this->Recentwork_model->recentwork_detail($id);
+		$lecturer = $this->Lecturer_model->lecturer_list($id);
+		$pic_group_list = $this->Recentwork_model->pic_group_list($id);
+		$pic_list = $this->Recentwork_model->pic_list($id);
+// print_r($pic_list);
+
 		$value = array(
 			'Result' => array(
-				// 'setting' => $setting
+				'recentwork_detail' => $query,
+				'lecturer' => $lecturer,
+				'pic_group_list' => $pic_group_list,
+				'pic_list' => $pic_list
+
 			),
 			'View' => 'front/recentwork_detail'
 		);
 		$this->LoadPage($value);
-		// print_r($_SESSION);
 	}
 
-	public function tpdi(){
-		$this->load->view('front/tpdi');
+	// public function tpdi(){
+	// 	$this->load->view('front/tpdi');
+	//
+	// }
 
+	public function lecturer(){
+		$value = array(
+			'Result' => array(
+				// 'setting' => $setting
+			),
+			'View' => 'front/lecturer'
+		);
+		$this->LoadPage($value);
 	}
+
+	public function teamwork(){
+		$value = array(
+			'Result' => array(
+				// 'setting' => $setting
+			),
+			'View' => 'front/teamwork'
+		);
+		$this->LoadPage($value);
+	}
+
+
 
 }

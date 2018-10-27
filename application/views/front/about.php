@@ -1,7 +1,7 @@
 
         <div class="col-lg-8 col-md-9 col-sm-12">
           <div class="card border-primary mb-3" style="max-width: 100%;">
-            <div class="card-header">เกี่ยวกับมิตรไทคุรุ</div>
+            <div class="card-header">สิ่งที่เราทำ</div>
             <div class="card-body">
 
               “หลักสูตรการพัฒนาครู สู่การพัฒนาผู้เรียนอย่างยั่งยืน”

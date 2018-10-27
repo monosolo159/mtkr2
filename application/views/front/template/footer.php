@@ -9,25 +9,26 @@
       <!-- <center>เลขประจำตัวผู้เสียภาษี </center> -->
       <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
       <!-- </div> -->
+      <!-- <div class="row"> -->
+        <center>
+          <a href="https://www.facebook.com/TeacherCourse2561/" target="_blank"><img src="<?php echo base_url('assets/images/facebook.png'); ?>" width="7%"></a>
+          <a href="https://www.youtube.com/channel/UCS0kdOkZnOv87jzXw-_it1g" target="_blank"><img src="<?php echo base_url('assets/images/youtube.png'); ?>" width="7%"></a>
+        </center>
+      <!-- </div> -->
+
 
     </div>
   </div>
 </div>
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-10 offset-lg-1">
     <div class="card border-primary mb-3" style="max-width: 100%; padding:2%">
-      <!-- <div class="card-header">Header</div> -->
-      <!-- <div class="card-body text-primary "> -->
-      <!-- <h5 style="text-align:center" class="card-title">FOOTER</h5> -->
-      <!-- <center>เลขประจำตัวผู้เสียภาษี </center> -->
-      <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-      <!-- </div> -->
       <center>
         <div class="fb-page" data-href="https://www.facebook.com/TeacherCourse2561/" data-tabs="timeline" data-width="500" data-height="400" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/TeacherCourse2561/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/TeacherCourse2561/">ไทคุรุ</a></blockquote></div>
       </center>
     </div>
   </div>
-</div>
+</div> -->
 </div>
 </div>
 
