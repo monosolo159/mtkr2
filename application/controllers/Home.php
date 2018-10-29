@@ -19,9 +19,15 @@ class Home extends CI_Controller {
 	}
 
 	public function portal(){
+		$news = $this->News_model->news_portal();
+		$courses= $this->Courses_model->courses_portal();
+		$recentwork= $this->Recentwork_model->recentwork_portal();
+
 		$value = array(
 			'Result' => array(
-				// 'setting' => $setting
+				'news' => $news,
+				'courses' => $courses,
+				'recentwork' => $recentwork,
 			),
 			'View' => 'front/portal'
 		);

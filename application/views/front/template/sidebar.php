@@ -8,7 +8,7 @@
     เมนูหลัก
   </div>
   <ul class="list-group list-group-flush nav navbar-nav">
-    <!-- <li class="list-group-item"><a href="<?php echo base_url('Home/portal'); ?>">หน้าแรก</a></li> -->
+    <li class="list-group-item"><a href="<?php echo base_url('Home/portal'); ?>">หน้าแรก</a></li>
     <li class="list-group-item"><a href="<?php echo base_url('Home/news'); ?>">ข่าวสาร</a></li>
     <li class="list-group-item"><a href="<?php echo base_url('Home/course'); ?>">หลักสูตร</a></li>
     <!-- <li class="list-group-item"><a href="<?php echo base_url('Home/recentwork'); ?>">ผลงานของเรา</a></li> -->

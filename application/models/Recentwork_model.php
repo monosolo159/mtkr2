@@ -4,9 +4,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Recentwork_model extends CI_Model
 {
 
+  public function recentwork_portal() {
+    $query =  $this->db
+    ->order_by('recentwork_order','asc')
+    ->where('recentwork_show',1)
+    ->limit(9)
+    ->get('recentwork')
+    ->result_array();
+    return $query;
+  }
+
   public function recentwork_list() {
     $query =  $this->db
     ->order_by('recentwork_order','asc')
+    ->where('recentwork_show',1)
     ->get('recentwork')
     ->result_array();
     return $query;
