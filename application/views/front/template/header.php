@@ -3,8 +3,9 @@
 <head>
   <!-- Required meta tags -->
   <meta name="google-site-verification" content="AfWAQPmwi9V1E86-WD4IlYq3zGQFVBVw_A3k9p3V7Wg" />
+  <meta name="google-site-verification" content="PAqoXt-X_QcDCBB3_FIpibSsv4VHSeELsxhblsK39Y0" />
 
-  
+
   <meta charset="utf-8">
   <meta name="description" content="ห้างหุ้นส่วนจำกัดมิตรไทคุรุ คือการรวมตัวกันของกลุ่มครูวิทยฐานะครูเชี่ยวชาญ ที่เต็มเปี่ยมด้วยความรู้ประสบการณ์ และกลุ่มศึกษานิเทศก์ที่มีประสบการณ์ด้านการจัดการเรียนรู้ ร่วมกันพัฒนาหลักสูตรเพื่อเพื่อนครู เพราะเราเชื่อว่า ครูเท่านั้นที่จะเข้าใจความต้องการของครูอย่างแท้จริง">
   <meta name="keywords" content="มิตรไทคุรุ,คุรุพัฒนา,จัดอบรม,คูปองครู,ว21">
