@@ -9,15 +9,15 @@
                 <div class="row">
                   <div class="card col-lg-4 col-md-12 col-sm-12 col-12">
                     <div class="alert alert-success" role="alert" style="text-align:center">
-                      <a href="<?php echo base_url('assets/images/C004.jpg') ?>"><img src="<?php echo base_url('assets/images/C004.jpg') ?>"  alt="“เลื่อนวิทยฐานะเกณฑ์ใหม่ ว.21 ครูชำนาญการ/ชำนาญการพิเศษ/เชี่ยวชาญ”" width="100%"></a>
+                      <a href="<?php echo base_url('assets/images/C005.jpg') ?>"><img src="<?php echo base_url('assets/images/C005.jpg') ?>"  alt="“เลื่อนวิทยฐานะเกณฑ์ใหม่ ว.21 ครูชำนาญการ/ชำนาญการพิเศษ/เชี่ยวชาญ”" width="100%"></a>
                       <h4 class="alert-heading" >“เลื่อนวิทยฐานะเกณฑ์ใหม่ ว.21 ครูชำนาญการ/ชำนาญการพิเศษ/เชี่ยวชาญ”</h4>
                       <hr>
                       <p>รหัสหลักสูตร -</p>
                       <hr>
-                      ระยะเวลา 10-11 พฤศจิกายน 2561
+                      ระยะเวลา 12-13 มกราคม 2562
                       <hr>
-                      <p>ราคา 1,800 บาท</p>
-                      <p> <a href="https://goo.gl/forms/3uiEZxIYuRsy7A1C3" class="btn btn-success">ลงทะเบียน</a></p>
+                      <p>ราคา 1,800/2,500 บาท</p>
+                      <p> <a href="https://goo.gl/forms/7JYPARgSsLAElHKx1" class="btn btn-success">ลงทะเบียน</a></p>
                     </div>
                   </div>
 
