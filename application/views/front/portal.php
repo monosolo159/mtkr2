@@ -68,6 +68,9 @@
             <div class="card-header">วิดีโอที่น่าสนใจ</div>
             <div class="card-body">
               <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <iframe width="100%" src="https://www.youtube.com/embed/qOouR5mMBeM"></iframe>
+                </div>
                   <div class="col-lg-6 col-md-6 col-sm-12">
                     <iframe width="100%" src="https://www.youtube.com/embed/-B-YlsHA1LQ"></iframe>
                   </div>
